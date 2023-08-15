@@ -1,0 +1,85 @@
+/* User Feed Container */
+.feed-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center; /* Center the content horizontally */
+  }
+  
+  /* User Card */
+  .user-card {
+    /* Remove display: flex */
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    width: 100%; /* Expand user card to full width */
+    max-width: 400px; /* Limit maximum width of user card */
+  }
+  
+  .user-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .user-info {
+    /* Remove display: flex */
+    flex-direction: column;
+  }
+  
+  .user-name {
+    font-weight: bold;
+  }
+  
+  /* Post */
+  .post {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-top: 10px;
+    width: 100%; /* Expand post to full width */
+  }
+  
+  .post-content {
+    margin-bottom: 10px;
+  }
+  
+  /* Post Image */
+  .post-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  /* Post Buttons */
+  .post-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .like-button,
+  .comment-button,
+  .share-button,
+  .bookmark-button {
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    outline: none;
+    font-weight: bold;
+  }
+  
+  .like-button.liked {
+    color: blue; /* Change color for liked button */
+  }
+  
+  .comment-button:hover,
+  .share-button:hover,
+  .bookmark-button:hover {
+    background-color: #f2f2f2;
+  }
+  
