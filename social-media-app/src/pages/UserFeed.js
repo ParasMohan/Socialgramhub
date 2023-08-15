@@ -6,6 +6,7 @@ import './UserFeed.css';
 const UserFeed = () => {
   const [likedPosts, setLikedPosts] = useState([]);
   const [bookmarkedPosts, setBookmarkedPosts] = useState([]);
+  const [expandedPostId, setExpandedPostId] = useState(null);
 
   const handleLikeToggle = (postId) => {
     if (likedPosts.includes(postId)) {
@@ -21,6 +22,10 @@ const UserFeed = () => {
     } else {
       setBookmarkedPosts([...bookmarkedPosts, postId]);
     }
+  };
+
+  const handleCommentToggle = (postId) => {
+    setExpandedPostId(postId === expandedPostId ? null : postId);
   };
 
   const isPostLiked = (postId) => {
@@ -42,20 +47,34 @@ const UserFeed = () => {
               if (post.username === user.username) {
                 const isLiked = isPostLiked(post._id);
                 const isBookmarked = isPostBookmarked(post._id);
+                const isExpanded = expandedPostId === post._id;
+
                 return (
                   <div className="post" key={post._id}>
-                    {post.mediaURL && <img className="post-image" src={post.mediaURL} alt="Post" />}
+                    {post.mediaURL && <img className="post-media" src={post.mediaURL} alt="Post Media" />}
                     <p className="post-content">{post.content}</p>
                     <div className="post-buttons">
                       <button className={`like-button ${isLiked ? 'liked' : ''}`} onClick={() => handleLikeToggle(post._id)}>
                         {isLiked ? 'Liked' : 'Like'}
                       </button>
-                      <button className="comment-button">Comment</button>
+                      <button className="comment-button" onClick={() => handleCommentToggle(post._id)}>
+                        {isExpanded ? 'Hide Comments' : 'Comment'}
+                      </button>
                       <button className="share-button">Share</button>
                       <button className={`bookmark-button ${isBookmarked ? 'bookmarked' : ''}`} onClick={() => handleBookmarkToggle(post._id)}>
                         {isBookmarked ? 'Bookmarked' : 'Bookmark'}
                       </button>
                     </div>
+                    {isExpanded && (
+                      <div className="comments">
+                        {post.comments.map((comment) => (
+                          <div className="comment" key={comment._id}>
+                            <span className="comment-username">{comment.username}:</span>
+                            <p className="comment-text">{comment.text}</p>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 );
               }

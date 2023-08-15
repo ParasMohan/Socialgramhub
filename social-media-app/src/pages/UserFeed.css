@@ -1,21 +1,21 @@
 /* User Feed Container */
 .feed-container {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column; /* Display content vertically */
+    align-items: center; /* Center content horizontally */
     gap: 20px;
     padding: 20px;
-    justify-content: center; /* Center the content horizontally */
   }
   
   /* User Card */
   .user-card {
-    /* Remove display: flex */
+    display: flex;
     align-items: center;
     gap: 10px;
     padding: 10px;
     border: 1px solid #ddd;
-    width: 100%; /* Expand user card to full width */
-    max-width: 400px; /* Limit maximum width of user card */
+    width: 100%;
+    max-width: 400px;
   }
   
   .user-avatar {
@@ -26,12 +26,13 @@
   }
   
   .user-info {
-    /* Remove display: flex */
+    display: flex;
     flex-direction: column;
   }
   
   .user-name {
     font-weight: bold;
+    margin-bottom: 5px;
   }
   
   /* Post */
@@ -39,18 +40,24 @@
     border: 1px solid #ddd;
     padding: 10px;
     margin-top: 10px;
-    width: 100%; /* Expand post to full width */
+    width: 100%;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .post-media {
+    max-width: 100px;
+    max-height: 100px;
+    width: auto;
+    height: auto;
+    margin-bottom: 10px;
+    object-fit: cover;
+    border-radius: 5px;
   }
   
   .post-content {
     margin-bottom: 10px;
-  }
-  
-  /* Post Image */
-  .post-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
   }
   
   /* Post Buttons */
@@ -74,7 +81,7 @@
   }
   
   .like-button.liked {
-    color: blue; /* Change color for liked button */
+    color: blue;
   }
   
   .comment-button:hover,
@@ -82,4 +89,10 @@
   .bookmark-button:hover {
     background-color: #f2f2f2;
   }
+  
+  .bookmark-button.bookmarked {
+    color: blue;
+  }
+  
+  /* Add more custom styles as needed */
   
